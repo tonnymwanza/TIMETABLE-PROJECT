@@ -27,7 +27,7 @@ def register(request):
                 messages.info(request, 'the email is already in use. pick a different one')
             else:
                 user = User.objects.create_user(username = username, email = email, password = password)
-                return redirect('login')
+                return redirect('registration_successful')
         else:
             messages.error(request, 'the passwords dont match. try again')
     return render(request, 'register.html')
@@ -41,7 +41,15 @@ def login(request):
         user = authenticate(username = username, password = password)
         if user is not None:
             auth.login(request, user)
+            if 'next' in request.POST:
+                return redirect(request.POST['next'])
             return redirect('home')
         else:
             messages.error(request, 'the login details are invalid. try again')
     return render(request, 'login.html')
+
+# the view that shows the registration has been successful
+class RegistrationSuccessfulView(View):
+
+    def get(self, request):
+        return render(request, 'registration_successful.html')

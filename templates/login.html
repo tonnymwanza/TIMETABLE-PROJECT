@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        {% load bootstrap5 %}
+    </head>
+    <body>
+        <div>
+            <div>
+                <h3>Login</h3>
+                <div>
+                    <form method="POST" action="">
+                        <div>
+                            <input type="text" name="username" placeholder="enter username" required>
+                        </div>
+                        <div>
+                            <input type="password" name="password" placeholder="enter password" required>
+                        </div>
+                        {% if request.GET.next %}
+                        <input type="hidden" name="next" value="{{request.GET.next}}">
+                        {% endif %}
+                        <div>
+                            <button type="submit">Login</button>
+                        </div>
+                        {% for message in messages %}
+                        <span style="color: red;">{{message}}</span>
+                        {% endfor %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

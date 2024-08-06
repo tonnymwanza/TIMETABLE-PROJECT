@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div>
+            <div>
+                <h3>Register</h3>
+            </div>
+            <div>
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <div>
+                        <input type="text" name="username" placeholder="enter username" required>
+                    </div>
+                    <div>
+                        <input type="email" name="email" placeholder="enter email" required>
+                    </div>
+                    <div>
+                        <input type="password" name="password" placeholder="enter password" required>
+                    </div>
+                    <div>
+                        <input type="password" name="password2" placeholder="confirm password" required>
+                    </div>
+                    <div>
+                        <button type="submit">Register</button>
+                    </div>
+                    {% for message in messages %}
+                    <span style="color: red;">{{message}}</span>
+                    {% endfor %}
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'teacher_app',
     'student_app',
     'main_app',
+    'bootstrap5',
 ]
 
 MIDDLEWARE = [
